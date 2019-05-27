@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyProflie</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="CSS/allcss.css">
+    <script type="text/javascript" src="JS/profile.js"></script>
+</head>
+<body>
+<div class="main-overShadow" style="display: block" onclick="loadPage()">
+    <div class="main-box">
+        <div class="main-welcome">
+            <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    width="200px" height="36px">
+                <image xlink:href="data:img/png;base64,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"></image>
+            </svg>
+        </div>
+        <div class="main-line"></div>
+        <div class="main-toMyProfile">
+            <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    width="147px" height="24px">
+                <image xlink:href="data:img/png;base64,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"></image>
+            </svg>
+        </div>
+        <div style="width: 400px;margin-top: 30px">
+            <div class="main-progressBar">
+                <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        width="727px" height="14px">
+                    <image xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtcAAAAOCAAAAADBS29PAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAHdElNRQfjBRkAIjFPmRLzAAAAcklEQVRo3u3YsQkCUQAE0S1LFFHk+o9V1H+ehYzBb8FAloke28EyeQHwuagWGQDWZagWGYCxe6BaZICxv86pWmJgPdwA1SLD+3gHUC0y22l+EtUic37OqVpk/qQ3qv5S+7U2ar/WRu3X2qj9Whu1X2ujX55Vk7r38lWcAAAAAElFTkSuQmCC"></image>
+                </svg>
+            </div>
+        </div>
+        <div class="main-attention">"点击任意处以继续"</div>
+    </div>
+</div>
+
+<!--自我profile部分-->
+<div class="back" onclick="resetPlace()" id="back-button" style="display: none">
+    <img src="IMG/back.png" style="opacity: 0.8" width="50px" height="50px">
+</div>
+<div class="self-introduce" style="display: none" id="self" onmousemove="picFirstINOver()">
+    <div class="pic1-first-in" id="pic1" style="z-index: 1">
+        <img src="IMG/3.jpg" style="float: right">
+        <div class="img-detail">
+            <div>
+                <img src="IMG/Additional.png" width="130px">
+            </div>
+            <div style="padding-right: 30px">
+                <img src="IMG/后续添加ing.png" width="30px">
+            </div>
+            <div style="padding-right: 15px">
+                <img src="IMG/邮箱.png" width="30px">
+            </div>
+            <div style="padding-right: 15px">
+                <img src="IMG/Github.png" width="30px">
+            </div>
+        </div>
+    </div>
+    <div class="pic2-first-in" id="pic2" style="z-index: 2">
+        <img src="IMG/2.jpg" style="float: right">
+        <div class="img-detail">
+            <div>
+                <img src="IMG/Programmer.png" width="130px">
+            </div>
+            <div style="padding-right: 30px">
+                <img src="IMG/trying.png" width="30px">
+            </div>
+            <div style="padding-right: 15px">
+                <img src="IMG/写过几个前端.png" width="30px">
+            </div>
+            <div style="padding-right: 15px">
+                <img src="IMG/language.png" width="30px">
+            </div>
+            <div style="padding-right: 15px">
+                <img src="IMG/热爱前端.png" width="30px">
+            </div>
+        </div>
+    </div>
+    <div class="pic3-first-in" id="pic3" style="z-index: 3">
+        <img src="IMG/1.jpg" style="float: right">
+        <div class="img-detail">
+            <div>
+                <img src="IMG/%20Interests&Hobbies.png" width="130px">
+            </div>
+            <div style="padding-right: 30px">
+                <img src="IMG/moves.png" width="30px">
+            </div>
+            <div style="padding-right: 15px">
+                <img src="IMG/PS.png" width="30px">
+            </div>
+            <div style="padding-right: 15px">
+                <img src="IMG/music.png" width="30px">
+            </div>
+            <div style="padding-right: 15px">
+                <img src="IMG/travelling.png" width="30px">
+            </div>
+        </div>
+    </div>
+    <div class="pic4-first-in" id="pic4" style="z-index: 4">
+        <img src="IMG/9.jpg" style="float: right">
+        <div class="img-detail">
+            <div>
+                <img src="IMG/MyProfile.png" width="150px">
+            </div>
+            <div style="padding-right: 30px">
+                <img src="IMG/专业.png" width="30px">
+            </div>
+            <div style="padding-right: 15px">
+                <img src="IMG/school.png" width="30px">
+            </div>
+            <div style="padding-right: 15px">
+                <img src="IMG/出生年月.png" width="30px">
+            </div>
+            <div style="padding-right: 15px">
+                <img src="IMG/籍贯.png" width="30px">
+            </div>
+            <div style="padding-right: 15px">
+                <img src="IMG/name.png" width="30px">
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
