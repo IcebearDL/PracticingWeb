@@ -2,125 +2,160 @@
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
-  <title>Hello, world!</title>
-  <script src="js/fetchapi.js"></script>
-  <style type="text/css">
-    .update-web{
-      /*在这里写display js 无法调用传参*/
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      padding: 20px;
-      margin-top: -200px;
-      margin-left: -200px;
-      box-shadow: 0 0 6px rgba(0,0,0,0.5);
-      z-index: 99;
-      width: 400px;
-      height: auto;
-      background-color: white;
-    }
-  </style>
+    <title>Hello, world!</title>
+    <script src="js/fetchapi.js"></script>
 </head>
 
 <body onload="getStudents()" id="body">
-<div style="position: fixed;z-index: 99;width: 100%;height: 100vh;
-              background-color: rgba(100%,100%,100%,0.5);
-              display: none"
-     id="update">
-  <div class="update-web">
-    <div>
-      <form onsubmit="updateStudent(event)">
-        <div style="text-align: center">
-          <p>Change the date:</p>
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Name</label>
-          <input type="text" class="form-control" id="updateName" placeholder="Name">
-        </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="updateEmail" aria-describedby="emailHelp" placeholder="Enter email">
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Contact No</label>
-          <input type="number" class="form-control" id="updateContactno" placeholder="Enter Contact No">
-        </div>
 
-        <div style="display: flex;justify-content: space-between">
-          <div style="display: inline-block">
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-          <div style="display: inline-block">
-            <button type="button" class="btn btn-primary" onclick="cancelUpdate()">Cancel</button>
-          </div>
+<!--更新框-->
+<div class="modal fade" id="Model1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">UpdateStudents Info</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form onsubmit="updateStudent(event)">
+                <div class="modal-body">
+                    <div style="text-align: center">
+                        <p>Change the date:</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Name</label>
+                        <input type="text" class="form-control" id="updateName" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="updateEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Student Num</label>
+                        <input type="number" class="form-control" id="updateStudentNum" placeholder="Enter Student Num">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
         </div>
-
-      </form>
     </div>
-  </div>
 </div>
-  <div class="container">
+
+<div class="container">
     <div class="jumbotron text-center mt-5">
-      <h2>STUDENT CRUD APP</h2>
+        <h2>STUDENT CRUD APP</h2>
+        <h5 class="text-primary">对学生list的增删改查操作</h5>
     </div>
 
     <form onsubmit="addStudent(event)">
-      <div class="form-group">
-        <label for="exampleInputPassword1">Name</label>
-        <input type="text" class="form-control" id="name" placeholder="Name">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Contact No</label>
-        <input type="number" class="form-control" id="contactno" placeholder="Enter Contact No">
-      </div>
-
-      <button type="submit" class="btn btn-primary">Submit</button>
-
-      <div>
-        <div style="display: inline-block">
-
+        <div class="form-group">
+            <label for="exampleInputPassword1">Name:</label>
+            <input type="text" class="form-control" id="name" placeholder="Name">
         </div>
-      </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address:</label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Student Num:</label>
+            <input type="number" class="form-control" id="studentNum" placeholder="Enter Student Num">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+        <div>
+            <div style="display: inline-block">
+            </div>
+        </div>
     </form>
 
     <small style="color:green" id="status"></small>
 
     <small style="color:red" id="errMessage"></small>
+<!--    搜索设置-->
+    <form onsubmit="searchStudent(event)">
+        <div class="form-group">
+            <label for="exampleInputPassword1">Searching......
+                <small style="color:green" id="searchTips"></small>
+                <small style="color:red" id="searchWarning"></small>
+            </label>
+
+            <div class="row py-2">
+                <div class="col-2">
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Search category
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" style="cursor: pointer" onclick="setSearchType('typeName')">By Name</a>
+                            <a class="dropdown-item" style="cursor: pointer" onclick="setSearchType('typeEmail')">By Email</a>
+                            <a class="dropdown-item" style="cursor: pointer" onclick="setSearchType('typeStudentNum')">By Student Num</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <input type="text" class="form-control d-inline-block" id="searchInput" placeholder="Please pick your Search category first.">
+            </div>
+                <div class="col-1">
+                    <button type="submit" class="btn btn-primary">Search!</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
     <table class="table table-dark mt-5">
-      <thead>
+        <thead>
         <tr>
-          <th scope="col">Name</th>
-          <th scope="col">E-mail</th>
-          <th scope="col">Contact No</th>
-          <th scope="col">Update</th>
-          <th scope="col">Delete</th>
+            <th scope="col">Name</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Student Num</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
         </tr>
-      </thead>
-      <tbody id='table-body'>
+        </thead>
+        <tbody id='table-body'>
         <!-- This should fetch the students details form DB -->
-      </tbody>
+        </tbody>
     </table>
+</div>
 
-  </div>
+<!-- 提示model -->
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog"
+     id="exampleModal1" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content p-3">
+            <div>
+                <p class="h5 font-weight-normal">
+                    <span class="text-primary" id="InfoText"></span>
+                </p>
+            </div>
+            <div class="position-absolute pr-3" style="right:0">
+                <button type="button" class="close btn-sm" style="outline: none" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
-  <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
 
 </html>
